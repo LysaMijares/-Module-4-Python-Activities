@@ -30,7 +30,8 @@ def shift_letter(letter, shift):
         the letter, shifted appropriately, if a letter.
         a single space if the original letter was a space.
     '''
-    # Replace `pass` with your code. 
+
+    # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     def shift_letter(letter, shift):
         letter = str(input("Please Enter a Letter: "))
@@ -52,10 +53,9 @@ def shift_letter(letter, shift):
         shifted_letter = chr(shift_code)
         return shifted_letter
 
+    # converts shift letter to shift_letter's values
     shifted_letter = shift_letter('A', 1)
     print(shifted_letter)  # prints the output
-
-
 
 
 def caesar_cipher(message, shift):
@@ -74,13 +74,15 @@ def caesar_cipher(message, shift):
     str
         the message, shifted appropriately.
     '''
-    # Replace `pass` with your code. 
+
+    # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     def caesar_cipher(message, shift):
         # Converts the message to uppercase
         message = message.upper()
-
+        # carries string to encrypted_message
         encrypted_message = []
+        # this loops the z back to a
         new_shift = shift % 26
         for letter in message:
             encrypted_message.append(getNewMessage(letter, new_shift))
@@ -91,8 +93,8 @@ def caesar_cipher(message, shift):
         new_message = ord(message) + shift
         return chr(new_message) if new_message <= 122 else chr(96 + new_message % 122)
 
+    # prints the caesar cipher coded word
     print(caesar_cipher('Word', 0))
-
 
 
 def shift_by_letter(letter, letter_shift):
@@ -118,7 +120,8 @@ def shift_by_letter(letter, letter_shift):
     str
         the letter, shifted appropriately.
     '''
-    # Replace `pass` with your code. 
+
+    # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
 
     def shift_by_letter(letter, letter_shift):
@@ -131,13 +134,15 @@ def shift_by_letter(letter, letter_shift):
 
         letter_value = ord(letter) - ord('A')
         number_shift = ord(letter_shift) - ord('A')
-
+        # the shifted_value is linked to process of addition by adding letter_value and number shift while using
+        # modulus which loops the letters z back to a
         shifted_value = (letter_value + number_shift) % 26
 
         shifted_letter = chr(shifted_value + ord('A'))
         return shifted_letter, shifted_value
 
     shifted_letter, shifted_value = shift_by_letter('', '')
+    # prints the shifted_letter
     print(shifted_letter, shifted_value)  # Output: 'F', 5
 
 
@@ -168,12 +173,14 @@ def vigenere_cipher(message, key):
     '''
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
+    # creates a string alphabet for the message
     alphabet = "abcdefghijklmnopqrstuvwxyz"
-
+    # utilizes dictionary and zips the value of the alphabet and its range while shifting the letter to index
     letter_to_index = dict(zip(alphabet, range(len(alphabet))))
     index_to_letter = dict(zip(range(len(alphabet)), alphabet))
 
     def vigenere_cipher(message, key):
+        # carries string to encrypted
         encrypted = ""
         split_message = [
             message[i: i + len(key)] for i in range(0, len(message), len(key))
@@ -188,8 +195,11 @@ def vigenere_cipher(message, key):
 
         return encrypted
 
+    # runs the program
     def result():
+        # capitalizes the message
         message = input("Enter the message here: ".upper())
+        # the number of shift made while utilizing key letters
         key = "funcooding"
         encrypted_message = vigenere_cipher(message, key)
         # prints the original message and the encrypted message, the cipher depends on the value of key
