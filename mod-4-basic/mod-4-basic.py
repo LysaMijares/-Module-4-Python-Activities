@@ -27,15 +27,20 @@ def savings(gross_pay, tax_rate, expenses):
     int
         the number of centavos remaining from an employee's pay after taxes and expenses
     '''
+
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     # Answer
     def savings():
         print("Welcome to Money After Tax and Expenses Calculator!\n")
+        # inputs the required data into the program
         name = input("Enter Employee's Full Name: ")
         gross_pay = int(input("Enter Income: "))
         expenses = int(input("Enter Expenses: "))
-        tax_rate = float()
+        tax_rate = float() # this could turn into tax_rate = float(input()) to have personalized tax_rate
+        # tax rate used is Philippines Taxes on personal income
+        # converts the tax rate by using gross_pay and multiplying it to the indicated tax rate in the taxable income
+        # bracket
         if gross_pay <= 250000:
             tax_rate = gross_pay * .0
         elif gross_pay <= 400000:
@@ -48,9 +53,9 @@ def savings(gross_pay, tax_rate, expenses):
             tax_rate = gross_pay * .30 + 402500
         else:
             tax_rate = gross_pay * .35 + 2205500
-
+            # total saving can be acquired by subtracting tax_rate and expenses to the gross_pay
         total_savings = gross_pay - tax_rate - expenses
-
+        # prints the tax report
         print("\nEmployee Name:", name, "\nAfter Tax Savings Report:\n")
         print("taxes amounted ₱", tax_rate, "in taxes.")
         print("Your expenses amounted to ₱", expenses)
@@ -85,35 +90,34 @@ def material_waste(total_material, material_units, num_jobs, job_consumption):
     str
         the amount of remaining material expressed with its unit (e.g., "10kg").
     '''
+
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     # Answer
     def material_waste():
         print("Welcome to Material Waste Calculator!")
+        # inputs the required int and strings to the program
         total_material = int(input("Enter the Total Material Available: "))
         material_units = str(input("Kilogram, or Liter? (kg or L): "))
         num_jobs = int(input("Enter Number of Jobs Available:"))
         job_consumption = int(input("Enter the Material Consumption per Job:"))
         material_c = int()
         total_consumption = int()
-
+        # strings for material units for kilogram and liter (Kgs, L)
         if material_units == "kg":
             material_units = "Kgs"
         elif material_units == "L":
             material_units = "L"
         else:
             print("Invalid Weight unit!")
-
+        # converts the material consumption by multiplying num_jobs to the job_consumption
         material_c = num_jobs * job_consumption
         total_consumption = material_c
-
+        # prints the material consumption
         print("Total Material: ", total_material, f"{material_units}")
         print("Total Material Consumption:", total_consumption, f"{material_units}")
 
     material_waste()
-
-
-
 
 
 def interest(principal, rate, periods):
@@ -137,22 +141,21 @@ def interest(principal, rate, periods):
     int
         the final value of the investment
     '''
+
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     # Answer
     def interest(principal, rate, periods):
         simple_interest = principal * (rate * periods)
         return principal + simple_interest
-
+    # inputs the required data here
     principal = int(input("Enter the principal:"))
     rate = float(input("Enter the rate:"))
     periods = int(input("Enter the number of periods invested:"))
 
     final_value = interest(principal, rate, periods)
+    # prints the value of the investment
     print(f"The final value of the investment is: {final_value:.2f}")
-
-
-
 
 
 def body_mass_index(weight, height):
@@ -183,15 +186,18 @@ def body_mass_index(weight, height):
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     # Answer
     print("Welcome to BMI Calculator!")
+    # inputs the required data into the program
     name = input("\nEnter your First Name here: ")
     weight = float(input("Enter your Weight in Kilogram here: "))
     height = float(input("Enter your Height in Meter here: "))
 
     def body_mass_index(weight, height):
+        # operation to be made in getting BMI
         bmi = weight / height ** 2
         return bmi
 
     bmi_result = body_mass_index(weight, height)
+    # prints the name and the BMI result
     print(f"{name}, your BMI is: {bmi_result:.2f}")
     print("\nFor reference:")
     print("\nBMI < 18.5 = underweight \nBMI < 25 = normal \nBMI < 30 = overweight \nBMI > 30 = Obese")
